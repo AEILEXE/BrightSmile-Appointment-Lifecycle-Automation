@@ -1,0 +1,11 @@
+flowchart TD
+    A[Appointment event] --> B{Appointment state}
+    B -->|Confirmed / upcoming| C[Confirmation note and timed wait]
+    C --> D{Still confirmed?}
+    D -->|Yes| E[Reminder checkpoint note]
+    D -->|No| F[Skip or end reminder path]
+    B -->|Cancelled| G[Remove from relevant workflow]
+    G --> H[Update contact tags]
+    H --> I[Cancellation note]
+    B -->|Attended| J[Visit-completed handling]
+    B -->|No-show| K[No-show tag and manual-review note]
